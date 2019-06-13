@@ -1,0 +1,41 @@
+<h1><%= @employee.first_name%>'s Edit Page</h1>
+
+<form method="POST" action="/employees/<%= @employee.id %>">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="_method" value="PATCH">
+    <div>
+        <label>Name:</label>
+        <input type="text" name="first_name" value="<%=@employee.first_name%>">
+    </div>
+    <div>
+        <label>Last Name:</label>
+        <input type="text" name="last_name" value="<%=@employee.last_name%>">
+    </div>
+    <div>
+        <label>Alias:</label>
+        <input type="text" name="alias" value="<%=@employee.alias%>">
+    </div>
+    <div>
+        <label>Title:</label>
+        <input type="text" name="title" value="<%=@employee.title%>">
+    </div>
+    <div>
+        <label>Office:</label>
+        <input type="text" name="office" value="<%=@employee.office%>">
+    </div>
+    <div>
+        <label>Image url:</label>
+        <input type="text" name="img_url" value="<%=@employee.img_url%>">
+    </div>
+    <div>
+        <label>Dog:</label>
+        <select name="dog_id">
+            <% @dogs.each do |dog| %>
+                <option value="<%=dog.id%>"><%= dog.name %> </option>
+            <%end%>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="update">
+    </div>
+</form>

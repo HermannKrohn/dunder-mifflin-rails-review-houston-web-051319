@@ -1,0 +1,18 @@
+<h1>Dog Index</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Breed</th>
+        <th>Age</th>
+        <th>Show</th>
+    </tr>
+    <% @dogs.each do |dog| %>
+        <tr>
+            <td><%=dog.name%></td>
+            <td><%=dog.breed%></td>
+            <td><%=dog.age%></td>
+            <td><a href="/dogs/<%= dog.id %>">show</a></td>
+        </tr>
+    <% end %>
+</table>

@@ -1,0 +1,29 @@
+<h1><%= @dog.name %>'s Page</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Breed</th>
+        <th>Age</th>
+    </tr>
+    <tr>
+        <td><%=@dog.name%></td>
+        <td><%=@dog.breed%></td>
+        <td><%=@dog.age%></td>
+    </tr>
+</table>
+
+<h3>Employees</h3>
+<ul>
+    <% @dog.employees.each do |em| %>
+        <li><%= em.first_name + " " +  em.last_name %></li>
+    <% end %>
+</ul>
+
+<a href="/dogs/<%=@dog.id%>/edit"><button type="button">Edit</button></a>
+<form method="POST" action="/dogs/<%=@dog.id%>">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="_method" value="DELETE">
+        <button>Delete</button>
+</form>
+

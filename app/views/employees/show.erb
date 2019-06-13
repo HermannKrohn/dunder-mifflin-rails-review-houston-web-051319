@@ -1,0 +1,35 @@
+<h1><%= @employee.first_name %>'s Page</h1>
+
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Alias</th>
+        <th>Title</th>
+        <th>Office</th>
+        <th>Picture</th>
+    </tr>
+    <tr>
+        <tr>
+            <td><%=@employee.first_name%></td>
+            <td><%=@employee.last_name%></td>
+            <td><%=@employee.alias%></td>
+            <td><%=@employee.title%></td>
+            <td><%=@employee.office%></td>
+            <td><a href="<%=@employee.img_url%>">Picture</a></td>
+        </tr>
+    </tr>
+</table>
+
+<h3>Dog</h3>
+<ul>
+    <li><%= @employee.dog.name %></li>
+</ul>
+
+<a href="/employees/<%=@employee.id%>/edit"><button type="button">Edit</button></a>
+<form method="POST" action="/employees/<%=@employee.id%>">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="_method" value="DELETE">
+        <button>Delete</button>
+</form>
+

@@ -1,0 +1,31 @@
+<h1><%= @dog.name%>'s Edit Page</h1>
+
+<form method="POST" action="/dogs/<%= @dog.id %>">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="_method" value="PATCH">
+    <div>
+        <label>Name:</label>
+        <input type="text" name="dog[name]" value="<%=@dog.name%>">
+    </div>
+    <div>
+        <label>Breed:</label>
+        <input type="text" name="dog[breed]" value="<%=@dog.breed%>">
+    </div>
+    <div>
+        <label>Age:</label>
+        <input type="text" name="dog[age]" value="<%=@dog.age%>">
+    </div>
+    <div>
+        <label>Employees:</label>
+        <% @employees.each do |em| %>
+            <% if(@dog.employees.include?(em)) %>
+                <input type="checkbox" name="dog[employee_ids][]" value="<%=em.id%>" checked><%= em.first_name %>
+            <% else %>
+                <input type="checkbox" name="dog[employee_ids][]" value="<%=em.id%>"><%= em.first_name %>
+            <% end %>
+        <% end %>
+    </div>
+    <div>
+        <input type="submit" value="update">
+    </div>
+</form>
